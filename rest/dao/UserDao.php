@@ -16,7 +16,7 @@ class UserDao extends Dao
     
 
     if (strlen($username) < 3) {
-        Flight::json(array(
+        return Flight::json(array(
           'status' => 'error',
           'message' => 'The username should be longer than 3 characters.'
         ));
@@ -24,7 +24,7 @@ class UserDao extends Dao
       }
   
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        Flight::json(array(
+        return Flight::json(array(
           'status' => 'error',
           'message' => "The email '" . $email . "' address is not valid."
         ));
@@ -78,20 +78,35 @@ class UserDao extends Dao
             return false;
         }
     }
+       public function userTable(){
+
+      $stmt = $this->conn->prepare("SELECT * FROM users");
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
 
 
+    public function login_user($username,$password){
 
 
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? AND password = ? ");
+    $stmt->execute([$username, $password]);
+   
+      if(sizeof($stmt->fetchAll(PDO::FETCH_ASSOC))>0){
+      return Flight::json(array(
+        'status' => 'success',
+        'message' => 'User found'
+      ));
+    }
+    else {
+      return Flight::json(array(
+        'status' => 'fail',
+        'message' => 'User NOT found'
+      ));
+    }
 
-
-
-
-
-
-
-
-
-
-
+    }
+  
 }
 ?>
