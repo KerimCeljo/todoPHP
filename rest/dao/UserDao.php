@@ -107,6 +107,13 @@ class UserDao extends Dao
     }
 
     }
+
+    public function deleteUser($id) {
+
+    $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
   
 }
 ?>

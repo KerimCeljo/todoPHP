@@ -40,5 +40,20 @@ Flight::route('POST /login', function(){
 });
 
 
+Flight::route('DELETE /users/@id', function($id){
+    // Logic to delete the user with the given ID
+    // For demonstration purposes, you might have a function to handle user deletion
+    $nesto = new UserDao;
+    $nesto->deleteUser($id);
+
+    if ($nesto) {
+        // Return a success message if the user was successfully deleted
+        Flight::json(['message' => "User with ID $id deleted successfully"]);
+    } else {
+        // Return an error message if something went wrong during deletion
+        Flight::halt(500, 'Failed to delete user');
+    }
+});
+
 
 ?>
