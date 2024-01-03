@@ -40,9 +40,8 @@ Flight::route('POST /login', function(){
 });
 
 
-Flight::route('DELETE /users/@id', function($id){
-    // Logic to delete the user with the given ID
-    // For demonstration purposes, you might have a function to handle user deletion
+Flight::route('DELETE /usersDelete/@id', function($id){
+
     $nesto = new UserDao;
     $nesto->deleteUser($id);
 

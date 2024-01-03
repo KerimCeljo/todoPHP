@@ -15,6 +15,14 @@ class TagDao extends Dao
         $stmt = $this->conn->prepare("INSERT INTO tags (name) VALUES (?)");
         return $stmt->execute([$name]);  
     }
+
+
+    public function deleteTag($id) {
+
+        $stmt = $this->conn->prepare("DELETE FROM tags WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
   
 }
 ?>

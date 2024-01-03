@@ -15,6 +15,20 @@ Flight::route('POST /taskAdd', function(){
 
 });
 
+Flight::route('DELETE /taskDelete/@id', function($id){
+
+    $nesto = new TaskDao;
+    $nesto->deleteTask($id);
+
+    if ($nesto) {
+        // Return a success message if the task was successfully deleted
+        Flight::json(['message' => "Task with ID $id deleted successfully"]);
+    } else {
+        // Return an error message if something went wrong during deletion
+        Flight::halt(500, 'Failed to delete task');
+    }
+});
+
 
 
 
