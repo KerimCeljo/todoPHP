@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['userId'])) {print ("User je logovan");}
+else {print("User nije logovan");}
+
+?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -7,6 +14,10 @@
     <link rel="stylesheet" href="style.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
+  <?php
+   if(!isset($_SESSION['userId'])){
+   ?>
+
 <body>
   <div class="container">
     <div class="title">Login</div>
@@ -30,6 +41,9 @@
       </form>
     </div>
   </div>
-
 </body>
+
+<?php 
+   }
+?>
 </html>

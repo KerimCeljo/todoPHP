@@ -1,7 +1,7 @@
 <?php
 
 
-Flight::route('POST /taskTag', function(){
+Flight::route('POST /api/taskTag', function(){
 
     $drugo = Flight::request()->data->tagName;
 
@@ -15,7 +15,7 @@ Flight::route('POST /taskTag', function(){
 
 });
 
-Flight::route('DELETE /taskTagDelete/@id', function($id){
+Flight::route('DELETE /api/taskTagDelete/@id', function($id){
 
     $nesto = new TaskTagDao;
     $nesto->deleteTaskTag($id);

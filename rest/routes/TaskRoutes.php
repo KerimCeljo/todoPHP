@@ -1,7 +1,7 @@
 <?php
 
 
-Flight::route('POST /taskAdd', function(){
+Flight::route('POST /api/taskAdd', function(){
 
     $description = Flight::request()->data->taskDesc;
 
@@ -15,7 +15,7 @@ Flight::route('POST /taskAdd', function(){
 
 });
 
-Flight::route('DELETE /taskDelete/@id', function($id){
+Flight::route('DELETE /api/taskDelete/@id', function($id){
 
     $nesto = new TaskDao;
     $nesto->deleteTask($id);

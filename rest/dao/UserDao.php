@@ -90,21 +90,27 @@ class UserDao extends Dao
     public function login_user($username,$password){
 
 
-    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? AND password = ? ");
+
+    $stmt = $this->conn->prepare("SELECT id, username, full_name FROM users WHERE username = ? AND password = ? ");
     $stmt->execute([$username, $password]);
    
-      if(sizeof($stmt->fetchAll(PDO::FETCH_ASSOC))>0){
+    $resultUserId = $stmt->fetchAll(PDO::FETCH_COLUMN)[0];
+
+      if($resultUserId){
+
+      session_start();
+      $_SESSION['userId'] = $resultUserId;
+
       return Flight::json(array(
         'status' => 'success',
         'message' => 'User found'
       ));
-    }
-    else {
+    } else {
       return Flight::json(array(
         'status' => 'fail',
         'message' => 'User NOT found'
       ));
-    }
+        }
 
     }
 

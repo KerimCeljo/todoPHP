@@ -1,7 +1,7 @@
 <?php
 
 
-Flight::route('POST /register', function(){
+Flight::route('POST /api/register', function(){
 
     $fullname = Flight::request()->data->fullname;
     $username = Flight::request()->data->username;
@@ -18,7 +18,7 @@ Flight::route('POST /register', function(){
 
 });
 
-Flight::route('GET /userTable', function(){
+Flight::route('GET /api/userTable', function(){
     $nesto = new UserDao;
     return  $nesto->userTable();
     
@@ -26,21 +26,25 @@ Flight::route('GET /userTable', function(){
 
 
 
-Flight::route('POST /login', function(){
+Flight::route('POST /api/login', function(){
 
     $username = Flight::request()->data->username;
     $password = Flight::request()->data->password;
  
+    //print "session prije login-a" .$_SESSION;
 
     $daoObject = new UserDao();
     $daoObject->login_user($username,$password);
+    //print implode(" ", $daoObject->login_user($username,$password));
 
+    
+    //print "session poslije login-a" . implode(" ",$_SESSION);
     
 
 });
 
 
-Flight::route('DELETE /usersDelete/@id', function($id){
+Flight::route('DELETE /api/usersDelete/@id', function($id){
 
     $nesto = new UserDao;
     $nesto->deleteUser($id);
