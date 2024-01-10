@@ -11,6 +11,8 @@
 
   <!-- Font Awesome (for icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script src="jQuery.js"></script>
+  <script src="ajax.js"></script>
 </head>
 
 <body>
@@ -41,6 +43,11 @@
 
             </div>
           </div>
+          <ul class="allTasks">
+            <li>Task 1 </li>
+            <li>Task 2 </li>
+
+             </ul>
 
         </div>
       </div>

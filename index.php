@@ -18,13 +18,15 @@ Flight::route('GET /test', function(){
     //echo phpinfo();
   });
 
-Flight::route('GET /', function(){
+Flight::route('GET /login', function(){
 
-  new Dao;
-  echo'Neki eko';
-  //echo phpinfo();
+  Flight::render('login');
 });
 
+Flight::route('GET /home', function(){
+
+  Flight::render('todolistForm');
+});
 
 Flight::route('GET /userTable', function(){
 
