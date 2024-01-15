@@ -4,6 +4,8 @@ session_start();
 if(isset($_SESSION['userId'])) {print ("User je logovan");}
 else {print("User nije logovan");}
 
+session_destroy();
+
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
@@ -11,8 +13,9 @@ else {print("User nije logovan");}
   <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="views/style.css">
     <script src="jQuery.js"></script>
+    <script src="ajax.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
   <?php
@@ -36,7 +39,7 @@ else {print("User nije logovan");}
           </div>
         </div>
 
-        <div class="button">
+        <div id="loginBtn" class="button">
           <input type="submit" value="Login">
         </div>
       </form>

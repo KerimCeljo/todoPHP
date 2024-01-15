@@ -28,6 +28,11 @@ Flight::route('GET /home', function(){
   Flight::render('todolistForm');
 });
 
+Flight::route('GET /', function(){
+
+  Flight::render('landingPage');
+});
+
 Flight::route('GET /userTable', function(){
 
   echo 'captable result';

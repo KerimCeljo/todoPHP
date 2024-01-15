@@ -1,4 +1,4 @@
-alert("Hello, this is TODO app");
+//alert("Hello, this is TODO app");
 
 //$("#task1").css("background-color", "#ffffff");
 /*
@@ -8,13 +8,13 @@ $(document).ready(function(){
   });
 */
   jQuery(function(){
+    
     $("body").css("background-color", "#ffffff");  
 
-  });
 
    // Login function
    function loginUser(username, password) {
-    var loginUrl = "views/login.php";
+    var loginUrl = "http://localhost/todoPHP/api/login";
     var loginData = {
       username: username,
       password: password,
@@ -24,7 +24,7 @@ $(document).ready(function(){
       console.log("Login success!", response);
 
       // Example: Redirect to a dashboard page on successful login
-      window.location.href = "views/login.php";
+      window.location.href = "/home";
     };
 
     var errorCallback = function (error) {
@@ -34,21 +34,32 @@ $(document).ready(function(){
       alert("Login failed. Please check your username and password.");
     };
 
-    performAjaxRequest(loginUrl, "POST", loginData, successCallback, errorCallback);
+    $.post(loginUrl, loginData);
   }
 
+
+ // $("#loginBtn").on("click", function (e) {
+//    e.preventDefault();
+
   // Event listener for the "Login" button click
-  $("#loginBtn").on("click", function (e) {
-    e.preventDefault();
+  $("#loginBtn").on('click', function (event) {
+    event.preventDefault();
 
     // Get username and password from your form fields
     var username = $("#username").val();
     var password = $("#password").val();
 
-    // Call the login function
-    loginUser(username, password);
+    console.log(username,' ', password)
 
-    return false; // Ensure to prevent default action
+    // Call the login function
+   loginUser(username, password);
+
+   // return false; // Ensure to prevent default action
+  });
+
+  $("#login").on('click', function (event) {
+    event.preventDefault();
+
   });
     
-  
+});

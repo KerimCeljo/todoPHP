@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TODOapp - Minimalistic Landing Page</title>
+  <script src="jQuery.js"></script>
+  <script src="ajax.js"></script>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +26,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-image: url('../images/todoPoz.jpg'); /* Add the path to your image */
+      background-image: url('./images/todoPoz.jpg'); /* Add the path to your image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -67,7 +69,8 @@
         Your ultimate task management solution.
       </div>
       <div class="btn-container">
-        <a href="login.php" id="loginBtn" class="btn btn-primary">Login</a>
+        
+        <a href="/todoPHP/login" class="btn btn-primary">Login</a>
         <a href="registration.php" id="registerBtn" class="btn btn-secondary">Register</a>
       </div>
     </div>
