@@ -120,6 +120,82 @@ class UserDao extends Dao
     $stmt->execute([$id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function edit_user($id,$fullname,$username,$password,$email,$phone)
+  {
+
+    //napraviti selekt usera sa prosljedjenim id-em i njegove atribute spasiti u oldFullName, oldUsername ...
+
+
+    $oldFullName = "NestoIzKverija";
+    $oldUserName = "NestoIzKverija";
+    //napraviti test da li je novi value prazan i ako nije da li se razlikuje od old value-a
+    //      ako je novi value popunjen (not empty) i nije isti kao old value ukljuciti ga u kveri
+    //        u protivnom ukljuciti old value u query
+
+    $queryName = $queryUsername = '';
+
+    if($fullname){
+      if($fullname != $oldFullName) $queryFullName = $fullname;
+    }
+    else{
+      $queryFullName = $oldFullName;
+    }
+
+    $queryUserName = $queryUsername = '';
+
+    if($username){
+      if($username != $oldUserName) $queryUserName = $username;
+    }
+    else{
+      $queryUserName = $oldUserName;
+    }
+    
+  
+
+  if (strlen($username) < 3) {
+      return Flight::json(array(
+        'status' => 'error',
+        'message' => 'The username should be longer than 3 characters.'
+      ));
+      die;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      return Flight::json(array(
+        'status' => 'error',
+        'message' => "The email '" . $email . "' address is not valid."
+      ));
+      die;
+    }
+
+
+  // Validate password against Pwned Passwords API
+  $isPasswordBreached = $this->validatePasswordAgainstPwnedPasswords($password); 
+  
+  if ($isPasswordBreached) {
+      // Password found in breaches
+      return Flight::json([
+          'status' => 'error',
+          'message' => 'This password has been exposed in previous data breaches.'
+      ]);
+  } else {
+
+  // Use of database connection from dao.php
+
+  $stmt = $this->conn->prepare("update users set full_name = ?, username = ?, password = ?, email = ?, phone_num =?
+  where id = ?");
+  $stmt->execute([$queryFullName, $username, $password, $email, $phone, $id]);
+
+
+  // validation
+  return Flight::json(array(
+    'status' => 'success',
+    'message' => 'User registered successfully'
+  ));
+  }
+      
+  }
   
 }
 ?>

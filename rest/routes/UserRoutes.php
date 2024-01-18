@@ -58,5 +58,23 @@ Flight::route('DELETE /api/usersDelete/@id', function($id){
     }
 });
 
+Flight::route('PUT /api/user/edit/@id', function($id){
+
+    
+    $fullname = Flight::request()->data->fullname;
+    $username = Flight::request()->data->username;
+    $password = Flight::request()->data->password;
+    $email = Flight::request()->data->email;
+    $phone = Flight::request()->data->phone;  
+
+    //return 'test';
+
+    $daoObject = new UserDao();
+    $daoObject->edit_user($id,$fullname,$username,$password,$email,$phone);
+
+    
+
+});
+
 
 ?>
