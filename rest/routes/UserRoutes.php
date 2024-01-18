@@ -9,10 +9,13 @@ Flight::route('POST /api/register', function(){
     $email = Flight::request()->data->email;
     $phone = Flight::request()->data->phone;  
 
+    var_dump(Flight::request()->data->username);
+
+
     //return 'test';
 
     $daoObject = new UserDao();
-    $daoObject->register_user($fullname,$username,$password,$email,$phone);
+    //$daoObject->register_user($fullname,$username,$password,$email,$phone);
 
     
 
@@ -66,6 +69,8 @@ Flight::route('PUT /api/user/edit/@id', function($id){
     $password = Flight::request()->data->password;
     $email = Flight::request()->data->email;
     $phone = Flight::request()->data->phone;  
+
+    //var_dump(Flight::request()->data);
 
     //return 'test';
 
