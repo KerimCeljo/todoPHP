@@ -121,58 +121,52 @@ class UserDao extends Dao
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function edit_user($id,$fullname,$username,$password,$email,$phone){
-      $updates = [];
+  public function edit_user($id,$data){
+    $updates = [];
+    $params = [];
   
+    $fullname = $data['full_name'];
+    $username = $data['username'];
+    $password = $data['password'];
+    $email = $data['email'];
+    $phone = $data['phone'];
+
+
       // Check each attribute and add it to the updates array only if it's provided
       if ($fullname !== null) {
           $updates[] = "full_name = ?";
+          $params[] = $fullname;
       }
       if ($username !== null) {
           $updates[] = "username = ?";
+          $params[] = $username;
       }
       if ($password !== null) {
           $updates[] = "password = ?";
+          $params[] = $password;
       }
       if ($email !== null) {
           $updates[] = "email = ?";
+          $params[] = $email; 
       }
       if ($phone !== null) {
           $updates[] = "phone_num = ?";
+          $params[] = $phone;
       }
   
       // Build the dynamic part of the SQL query
       $sql = "UPDATE users SET " . implode(', ', $updates) . " WHERE id = ?";
   
-      // Create the array of parameters for the prepared statement
-      $params = [];
-      if ($fullname !== null) {
-          $params[] = $fullname;
-      }
-      if ($username !== null) {
-          $params[] = $username;
-      }
-      if ($password !== null) {
-          $params[] = $password;
-      }
-      if ($email !== null) {
-          $params[] = $email;
-      }
-      if ($phone !== null) {
-          $params[] = $phone;
-      }
-  
       // Add the user ID parameter to the end of the array
       $params[] = $id;
   
-
       if(!empty($updates)){
       // Execute the prepared statement
       $stmt = $this->conn->prepare($sql);
       $stmt->execute($params);
       }
 
-      var_dump($username);
+      return ([$id, $data]);
   
   }
  
