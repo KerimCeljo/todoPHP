@@ -5,8 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TODOapp - Minimalistic Landing Page</title>
-  <script src="./script/jQuery.js"></script>
-  <script src="./script/ajax.js"></script>
+  <!-- <script src="./assets/js/jQuery.js"></script>
+  <script src="./assets/js/ajax.js"></script> -->
+
+
+  <!-- CSS za spapp -->
+  <link rel="stylesheet" href="./assets/css/spapp.css" />
+  <link rel="stylesheet" href="./assets/css/custom.css" />
+  <!-- Starija verzija jQuerija ispod sa custom skriptama za spapp -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script src="./assets/js/jquery.spapp.js"></script>
+  <script src="./assets/js/custom.js"></script>
+
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +36,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-image: url('./images/todoPoz.jpg'); /* Add the path to your image */
+      background-image: url('./assets/images/todoPoz.jpg'); /* Add the path to your image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -60,24 +70,23 @@
 
 <body>
 
-  <div class="landing-container">
-    <div class="app-container">
-      <div class="app-title">
-        TODOapp
-      </div>
-      <div class="app-description">
-        Your ultimate task management solution.
-      </div>
-      <div class="btn-container">
+    <!-- <nav role="navigation">
+      <ul id="tabs">
         
-        <a href="/todoPHP/login" class="btn btn-primary">Login</a>
-        <a href="registration.php" id="registerBtn" class="btn btn-secondary">Register</a>
-      </div>
-    </div>
-  </div>
+      </ul>
+    </nav> -->
 
-  <!-- Bootstrap JavaScript and dependencies (at the end of the body) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <main id="spapp" role="main">
+    
+      <section id="view_2">view 2 AA</section>
+      <section id="view_3"><h1>view 3 AAA</h1></section>
+      <section id="error_404"><h1>Page not found</h1></section>
+      <section id="login"></section>
+      <section id="view_1" data-load="landingPage.html" ></section>
+
+
+    </main>
+
 </body>
 
 </html>

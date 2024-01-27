@@ -13,37 +13,9 @@ require_once './rest/dao/TagDao.php';
 require_once './rest/dao/TaskListDao.php';
 require_once './rest/dao/TaskTagDao.php';
 
-Flight::route('GET /test', function(){
-    echo'From / tesdasdsadasdsadsadsadsadsat';
-    //echo phpinfo();
-  });
-
-Flight::route('GET /login', function(){
-
-  Flight::render('login');
-});
-
-Flight::route('GET /home', function(){
-
-  Flight::render('todolistForm');
-});
-
 Flight::route('GET /', function(){
-
-  Flight::render('landingPage');
+  Flight::render('app');
 });
-
-Flight::route('GET /userTable', function(){
-
-  echo 'captable result';
-
-  $nesto = new UserDao;
-  $rez = $nesto->userTable();
-
-
-  var_dump($rez);
-});
-
 
 
 Flight::start();
