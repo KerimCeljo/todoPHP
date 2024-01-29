@@ -1,3 +1,13 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['userId'])) {print ("User je logovan");}
+else {print("User nije logovan");}
+
+session_destroy();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,16 +80,29 @@
 
 <body>
 
-    <!-- <nav role="navigation">
+<?php
+   if(isset($_SESSION['userId'])){
+   ?>
+    <nav role="navigation">
       <ul id="tabs">
         
       </ul>
-    </nav> -->
+    </nav>
+    <?php
+   }
+   ?>
 
     <main id="spapp" role="main">
+
+    <?php
+   if(isset($_SESSION['userId'])){
+   ?>
     
       <section id="view_2">view 2 AA</section>
       <section id="view_3"><h1>view 3 AAA</h1></section>
+      <?php
+   }
+   ?>
       <section id="error_404"><h1>Page not found</h1></section>
       <section id="login"></section>
       <section id="view_1" data-load="landingPage.html" ></section>

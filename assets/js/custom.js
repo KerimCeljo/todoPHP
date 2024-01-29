@@ -23,8 +23,8 @@ $(document).ready(function() {
       onReady: function() { $("#view_1").append($.now()+': Written when ready<br/>'); }
     });
     app.route({
-      view: 'view_2',
-      load: 'login.html',
+      view: 'homepage',
+      load: 'todolistForm.html',
     
     });
     app.route({

@@ -37,7 +37,7 @@ Flight::route('POST /api/login', function(){
     //print "session prije login-a" .$_SESSION;
 
     $daoObject = new UserDao();
-    $daoObject->login_user($username,$password);
+    return $daoObject->login_user($username,$password);
     //print implode(" ", $daoObject->login_user($username,$password));
 
     
