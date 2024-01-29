@@ -11,10 +11,10 @@
         * List parameters such as servername, username, password, schema. Make sure to use appropriate port
         */
 
-        $servername = "localhost";
+        $servername = "localhost:3308";
         $username = "root";
         $password = "";
-        $schema = "todoapp";
+        $schema = "todo";
 
         /*options array neccessary to enable ssl mode - do not change*/
         $options = array(
