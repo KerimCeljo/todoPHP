@@ -3,8 +3,7 @@ $(document).ready(function() {
     var nav = 
     "<li>" + '<a href="#view_1">go to view 1</a>' + "</li>" +
     "<li>" + '<a href="#view_2">go to view 2</a>' + "</li>" +
-    "<li>" + '<a href="#view_3">go to view 3</a>' + "</li>" +
-    "<li>" + '<a href="#homepage">homepage</a>' + "</li>"
+    "<li>" + '<a href="#view_3">go to view 3</a>' + "</li>" 
   
     $("#tabs").html(nav);
   

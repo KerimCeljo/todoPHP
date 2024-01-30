@@ -26,7 +26,7 @@ class TaskDao extends Dao
 
         $stmt = $this->conn->prepare("DELETE FROM tasks WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
 
     public function listTasks($user_id){

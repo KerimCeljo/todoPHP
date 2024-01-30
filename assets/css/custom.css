@@ -50,7 +50,7 @@ html { line-height: 1.5; font-family: sans-serif; font-weight: normal; color: rg
 body { margin:0; }
 
 nav { height:50px; line-height:50px; background:#00acc1; position:fixed; top:0; left:0; width:100%; }
-nav ul li { display:block; float:left; width:25%; text-align:center; }
+nav ul li { display:block; float:left; width:33%; text-align:center; }
 nav ul li a { color:#fff; text-decoration:none; }
 
 /* main#spapp > section { padding:60px 10px 10px 10px; background:#ffcdd2; }   */
