@@ -15,7 +15,7 @@ Flight::route('POST /api/register', function(){
     //return 'test';
 
     $daoObject = new UserDao();
-    //$daoObject->register_user($fullname,$username,$password,$email,$phone);
+    return $daoObject->register_user($fullname,$username,$password,$email,$phone);
 
     
 

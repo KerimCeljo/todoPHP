@@ -16,7 +16,7 @@ $(document).ready(function () {
         console.log(data);
 
         if(data.status == 'fail'){
-          alert("NE MOŽE!");
+          alert("BLOCKED");
         }
 
         if(data.status == 'success'){
