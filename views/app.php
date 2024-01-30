@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['userId'])) {print ("User je logovan");}
+if(isset($_SESSION['userId'])) {print ($_SESSION['userId']);}
 else {print("User nije logovan");}
 
 session_destroy();

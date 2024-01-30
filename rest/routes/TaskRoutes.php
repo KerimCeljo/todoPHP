@@ -11,7 +11,7 @@ Flight::route('POST /api/taskAdd', function(){
     $daoObject = new TaskDao;
     $daoObject->addTask($description);
 
-    
+    return Flight::json(["very nice!"]);
 
 });
 
@@ -36,7 +36,17 @@ Flight::route('GET /api/listTasks/@user_id', function($user_id){
 
 
     Flight::json($result);
-})
+});
+
+Flight::route('GET /api/listUserTasks', function(){
+    //Works only for logged in users
+
+    $taskDao = new TaskDao;
+    $result = $taskDao->listTasksForLoggedInUser();
+
+
+    Flight::json($result);
+});
 
 
 

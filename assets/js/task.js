@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("form").submit(function (event) {
       
       var formData = {
-        description: $("#description").val(),
+        taskDesc: $("#taskDesc").val(),
       };
   
       $.ajax({
@@ -11,15 +11,12 @@ $(document).ready(function () {
         data: formData,
         dataType: "json",
         encode: true,
-      }).done(function (data) {
-        console.log(data);
-
-        if(data.status == 'fail'){
-          alert("NE MOŽE!");
-        }
-
-        if(data.status == 'success'){
-          // redirect na home page...
+        error: function(){
+          console.log("failiure");
+        },
+        success: function(){
+          console.log("success");
+          getTasks();
         }
       });
   
@@ -32,13 +29,19 @@ $(document).ready(function () {
     // once we have ID change the $.ajax method to use url variable instead of fixed string
     var url = 'http://localhost/todoPHP/api/listTasks/' + 'ID'
 
+    getTasks();
+
+    function getTasks(){
     $.ajax({
       type: "GET",
-      url: "http://localhost/todoPHP/api/listTasks/1"
-    }).done(function (data) {
+      url: "http://localhost/todoPHP/api/listUserTasks",
+      error: function(){
+        createTaskHTML([]);
+      }
+    }).done(function (data){
       createTaskHTML(data);
     });
-
+  }
 
     function createTaskHTML(tasks){
       let result = '';
