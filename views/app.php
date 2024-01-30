@@ -22,10 +22,13 @@ session_destroy();
   <!-- CSS za spapp -->
   <link rel="stylesheet" href="./assets/css/spapp.css" />
   <link rel="stylesheet" href="./assets/css/custom.css" />
+  <link href="./assets/css/toster.css" rel="stylesheet">
   <!-- Starija verzija jQuerija ispod sa custom skriptama za spapp -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <script src="./assets/js/jquery.spapp.js"></script>
   <script src="./assets/js/custom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
 
   <!-- Bootstrap CSS -->

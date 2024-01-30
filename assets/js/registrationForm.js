@@ -1,7 +1,11 @@
-$(function() {
-  // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
-  $("form[name='registration']").validate({
+$(document).ready(function () {
+
+  // $("form").submit(function (event) {
+  //   event.preventDefault();
+  // });
+
+
+  $("form[name='registerForm']").validate({
     // Specify validation rules
     rules: {
       // The key name on the left side is the name attribute
@@ -9,6 +13,7 @@ $(function() {
       // on the right side
       fullname: "required",
       username: "required",
+      phone: "required",
       email: {
         required: true,
         // Specify that email should be validated
@@ -23,44 +28,54 @@ $(function() {
     // Specify validation error messages
     messages: {
       fullname: "Please enter your full name",
-      username: "Please enter your username",
+      username: "Please enter your user name",
+      phone: "Please enter your phone",
+
       password: {
         required: "Please provide a password",
         minlength: "Your password must be at least 8 characters long"
       },
       email: "Please enter a valid email address"
     },
-    // Add the submitHandler to handle the form submission
-    submitHandler: function(form) {
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    // or call a JS function inside the submitHandler
+    submitHandler: function(form, event) {
+      event.preventDefault();
+
       var formData = {
-        fullname: $("#fullname").val(),
-        // You may need to adjust the field names based on your form
-        username: $("#username").val(),
-        password: $("#password").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-      };
+            fullname: $("#fullname").val(),
+            username: $("#username").val(),
+            password: $("#password").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val(),
+          };
 
-      $.ajax({
-        type: "POST",
-        url: "http://localhost/todoPHP/api/register",
-        data: formData,
-        dataType: "json",
-        encode: true
-      }).done(function(data) {
-        console.log(data);
-
-        if (data.status == 'fail') {
-          alert("BLOCKED");
-        }
-
-        if (data.status == 'success') {
-          // redirect na login ?
-          alert("User has been added");
-          window.location.hash = "login";
-        }
-      });
-      return false; // Prevent the default form submission
+      addUser(formData);
     }
   });
+
+  function addUser(formData){
+    $.ajax({
+      type: "POST",
+      url: "http://localhost/todoPHP/api/register",
+      data: formData,
+      dataType: "json",
+      encode: true,
+      error: function(jqXHR){
+        toastr.error(jqXHR.responseJSON.message);
+      }
+    }).done(function (data) {
+      if(data.status == 'fail'){
+        toastr.warning('there was an issue with adding the user, check console for more details');
+        console.log(data);
+      }
+
+      if(data.status == 'success'){
+        // redirect na login ?
+        toastr.success("User has been added");
+        console.log(data);
+      }
+    });
+  }
 });

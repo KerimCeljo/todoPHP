@@ -17,7 +17,7 @@ class UserDao extends Dao
 
     if (strlen($username) < 3) {
         return Flight::json(array(
-          'status' => 'error',
+          'status' => 'fail',
           'message' => 'The username should be longer than 3 characters.'
         ));
         die;
@@ -25,7 +25,7 @@ class UserDao extends Dao
   
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return Flight::json(array(
-          'status' => 'error',
+          'status' => 'fail',
           'message' => "The email '" . $email . "' address is not valid."
         ));
         die;
@@ -38,7 +38,7 @@ class UserDao extends Dao
     if ($isPasswordBreached) {
         // Password found in breaches
         return Flight::json([
-            'status' => 'error',
+            'status' => 'fail',
             'message' => 'This password has been exposed in previous data breaches.'
         ]);
     } else {
