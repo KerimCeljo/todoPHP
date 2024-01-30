@@ -23,6 +23,13 @@ class TaskDao extends Dao
         $stmt->execute([$id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
+
+    public function listTasks($user_id){
+        $stmt = $this->conn->prepare("SELECT description FROM tasks WHERE user_id = ?");
+        $stmt->execute([$user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }      
   
 }
 ?>

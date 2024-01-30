@@ -29,6 +29,16 @@ Flight::route('DELETE /api/taskDelete/@id', function($id){
     }
 });
 
+Flight::route('GET /api/listTasks/@user_id', function($user_id){
+
+    $taskDao = new TaskDao;
+    $result = $taskDao->listTasks($user_id);
+
+
+    Flight::json($result);
+})
+
+
 
 
 

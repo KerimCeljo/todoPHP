@@ -80,14 +80,23 @@ session_destroy();
 
 <body>
 
+<nav role="navigation">
+      <ul id="tabs">
+        
+      </ul>
+    </nav>
+
 <?php
    if(isset($_SESSION['userId'])){
    ?>
+   <!--
     <nav role="navigation">
       <ul id="tabs">
         
       </ul>
     </nav>
+
+   -->
     <?php
    }
    ?>
@@ -106,7 +115,8 @@ session_destroy();
       <section id="error_404"><h1>Page not found</h1></section>
       <section id="login"></section>
       <section id="view_1" data-load="landingPage.html" ></section>
-
+      <section id="homepage"></section>
+      <section id="register"></section>
 
     </main>
 

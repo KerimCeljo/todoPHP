@@ -21,6 +21,7 @@ $(document).ready(function () {
 
         if(data.status == 'success'){
           // redirect na home page...
+          window.location.hash = "homepage";
         }
       });
   

@@ -16,7 +16,11 @@ require_once './rest/dao/TaskTagDao.php';
 Flight::route('GET /', function(){
   Flight::render('app');
 });
-
+/*
+Flight::route('GET /nesto', function(){
+  new Dao;
+});
+*/
 
 Flight::start();
 

@@ -94,12 +94,12 @@ class UserDao extends Dao
     $stmt = $this->conn->prepare("SELECT id, username, full_name FROM users WHERE username = ? AND password = ? ");
     $stmt->execute([$username, $password]);
    
-    $resultUserId = $stmt->fetchAll(PDO::FETCH_COLUMN)[0];
+    $resultUser = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-      if($resultUserId){
+      if($resultUser){
 
       session_start();
-      $_SESSION['userId'] = $resultUserId;
+      $_SESSION['userId'] = $resultUser[0];
 
       return Flight::json(array(
         'status' => 'success',
